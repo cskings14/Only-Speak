@@ -3,19 +3,23 @@ import axios from "axios";
 import Article from "./Article";
 
 const ArticleList = () => {
-    const [myArray, setMyArray] = useState([]);
+    const [data, setData] = useState([]);
 
-
+    const getData = async () => {
+        const { data } = await axios.get("http://127.0.0.1:8000/api/articles/");
+        setData(data);
+        console.log(data);
+    };
+    
+    
     useEffect(() => {
-        axios.get("http://127.0.0.1:8000/api/articles/").then(result => {
-            setMyArray(result.data);
-        });
+        getData();
     }, []);
 
 
     return (
        <div>
-        <Article data={myArray} />
+        { data.map(article => <Article dataset={article} />)}
        </div> 
     )
 }
