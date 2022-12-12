@@ -1,9 +1,10 @@
-
+import React from "react";
+import ArticleList from "./components/article/ArticleListView";
 
 function App() {
   return (
     <div className="App">
-      bruh
+      <ArticleList />
     </div>
   );
 }
