@@ -1,0 +1,21 @@
+.title {
+    font-weight: bold;
+    text-align: center;
+    font-size: 20px;
+}
+.description {
+    color: gray;
+}
+
+.content {
+    padding-bottom: 10px;
+}
+
+.picture {
+    width: 100%;
+    object-fit: cover;
+    height: 450px;
+}
+.card {
+    padding-bottom: 50px;
+}
