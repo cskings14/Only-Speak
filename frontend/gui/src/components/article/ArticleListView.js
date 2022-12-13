@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import Article from "./Article";
+import AddArticle from "../AddArticle";
 
 const ArticleList = () => {
     const [data, setData] = useState([]);
@@ -20,6 +21,7 @@ const ArticleList = () => {
     return (
        <div>
         { data.map(article => <Article dataset={article} />)}
+        <AddArticle />
        </div> 
     )
 }

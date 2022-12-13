@@ -44,36 +44,3 @@ const Header = () => {
 };
 
 export default Header;
-
-// {user ? (
-//   <>
-//     <Link to="/">Home</Link>
-//     <Link to="/protected">Protected Page</Link>
-//     <button onClick={logoutUser}>Logout</button>
-//   </>
-// ) : (
-//   <>
-//     <Link to="/login">Login</Link>
-//     <Link to="/register">Register</Link>
-//   </>
-// )}
-
-{/* <nav>
-      <div>
-        <h1>App Name</h1>
-        <div>
-          {user ? (
-            <>
-              <Link to="/">Home</Link>
-              <Link to="/protected">Protected Page</Link>
-              <button onClick={logoutUser}>Logout</button>
-            </>
-          ) : (
-            <>
-              <Link to="/login">Login</Link>
-              <Link to="/register">Register</Link>
-            </>
-          )}
-        </div>
-      </div>
-    </nav> */}

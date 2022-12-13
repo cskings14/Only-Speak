@@ -15,33 +15,6 @@ const Article = props => {
     
 
   return (
-    // <Card sx={{ maxWidth: 345 }} >
-    //   <CardActionArea>
-    //   <CardMedia
-    //       component="img"
-    //       height="140"
-    //       image={defaultimg}
-    //       alt="default"
-    //     />
-    //     <CardContent>
-    //       <Typography gutterBottom variant="h5" component="div">
-    //         {props.dataset.title}
-    //       </Typography>
-    //       <Typography variant="body2" color="text.primary">
-    //       {props.dataset.description}
-    //       </Typography>
-    //       <br />
-    //       <Typography variant="body2" color="text.secondary">
-    //       {props.dataset.content}
-    //       </Typography>
-    //     </CardContent>
-    //   </CardActionArea>
-    //   <CardActions>
-    //     <Button size="small" color="primary" href={`/${props.dataset.id}`}>
-    //       Read More
-    //     </Button>
-    //   </CardActions>
-    // </Card>
     <Card className='card'>
         <Card.Img variant="top" src={defaultimg} className='picture'/>
         <Card.Body>
