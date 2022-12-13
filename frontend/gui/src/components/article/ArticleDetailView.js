@@ -10,7 +10,7 @@ const ArticleDetail = () => {
     const { articleID } = useParams();
 
     const getArticle = async () => {
-        const  article  = await (
+        const article  = await (
             await fetch(
                 `http://127.0.0.1:8000/api/articles/${articleID}/`, {
                 method: "GET"

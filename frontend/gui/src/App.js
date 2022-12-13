@@ -5,7 +5,7 @@
 
 import React from "react";
 import Footer from "./components/Footer";
-import Navbar from "./components/Navbar";
+import Header from "./components/Navbar";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import PrivateRoute from "./utils/PrivateRoute";
 import { AuthProvider } from "./context/AuthContext";
@@ -31,12 +31,15 @@ function App() {
     <Router>
       <div className="app">
         <AuthProvider>
-          <Navbar />
+          <Header />
           <Routes>
             {/* <PrivateRoute element={ProtectedPage} path="/protected" exact /> */}
             <Route element={<Login />} path="/login" />
             <Route element={<Register />} path="/register" />
             <Route element={<Home />} path="/" />
+            <Route path='/protected' element={<PrivateRoute>
+              <ProtectedPage />
+            </PrivateRoute>} />
           </Routes>
         </AuthProvider>
         <Footer />
