@@ -35,7 +35,7 @@ const Article = props => {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary" href='/${props.id}'>
+        <Button size="small" color="primary" href={`/${props.dataset.id}`}>
           Read More
         </Button>
       </CardActions>
