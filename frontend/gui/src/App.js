@@ -9,10 +9,10 @@ import Header from "./components/Navbar";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import PrivateRoute from "./utils/PrivateRoute";
 import { AuthProvider } from "./context/AuthContext";
-import Home from "./views/homePage";
+// import Home from "./views/homePage";
 import Login from "./views/loginPage";
 import Register from "./views/registerPage";
-import ProtectedPage from "./views/ProtectedPage";
+// import ProtectedPage from "./views/ProtectedPage";
 
 
 function App() {
@@ -36,11 +36,14 @@ function App() {
             {/* <PrivateRoute element={ProtectedPage} path="/protected" exact /> */}
             <Route element={<Login />} path="/login" />
             <Route element={<Register />} path="/register" />
-            <Route element={<Home />} path="/" />
-            <Route exact path="/articles" element={<ArticleList />} />
-            <Route exact path="/articles/:articleID" element={<ArticleDetail />} />
-            <Route path='/protected' element={<PrivateRoute>
-              <ProtectedPage />
+            {/* <Route element={<Home />} path="/" /> */}
+            {/* <Route exact path="/articles" element={<ArticleList />} /> */}
+            {/* <Route exact path="/articles/:articleID" element={<ArticleDetail />} /> */}
+            <Route path='/' element={<PrivateRoute>
+              <ArticleList />
+            </PrivateRoute>} />
+            <Route path='/:articleID' element={<PrivateRoute>
+              <ArticleDetail />
             </PrivateRoute>} />
           </Routes>
         </AuthProvider>
