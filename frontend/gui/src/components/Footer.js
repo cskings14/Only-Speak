@@ -1,7 +1,9 @@
+import './Footer.css';
+
 const Footer = () => {
     return (
-      <div>
-        <h4>Created By You</h4>
+      <div className="footer">
+        © 2022 Copyright: Only Speak
       </div>
     );
   };

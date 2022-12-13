@@ -1,0 +1,17 @@
+.links {
+    color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-decoration: none;
+    text-align: center;
+    padding-top: 8px;
+}
+
+.button:hover {
+    opacity: .5;
+    transition-duration: 1s;
+}
+
+.who {
+    padding-left: 50px;
+}

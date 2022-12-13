@@ -1,6 +1,6 @@
 // import React from "react";
-// import ArticleList from "./components/article/ArticleListView";
-// import ArticleDetail from "./components/article/ArticleDetailView";
+import ArticleList from "./components/article/ArticleListView";
+import ArticleDetail from "./components/article/ArticleDetailView";
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import React from "react";
@@ -37,6 +37,8 @@ function App() {
             <Route element={<Login />} path="/login" />
             <Route element={<Register />} path="/register" />
             <Route element={<Home />} path="/" />
+            <Route exact path="/articles" element={<ArticleList />} />
+            <Route exact path="/articles/:articleID" element={<ArticleDetail />} />
             <Route path='/protected' element={<PrivateRoute>
               <ProtectedPage />
             </PrivateRoute>} />
