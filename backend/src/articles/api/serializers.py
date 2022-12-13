@@ -17,10 +17,12 @@ class ArticleSerializer(serializers.ModelSerializer):
 
 
 class CommentSerializer(serializers.ModelSerializer):
+    author = serializers.SlugRelatedField(queryset=User.objects.all(), slug_field='username')
+    article = serializers.SlugRelatedField(queryset=Article.objects.all(), slug_field='id')
     class Meta:
         model = Comment
         fields = ('author','id', 'article', 'content', 'created_at', 'updated_at')
-        read_only_fields = ('created_at', 'updated_at')
+        read_only_fields = ('created_at', 'updated_at', 'article')
         depth = 1
         # depth = 1 means that the serializer will include the article object.
         # depth = 2 means that the serializer will include the article object and the article object's author.
