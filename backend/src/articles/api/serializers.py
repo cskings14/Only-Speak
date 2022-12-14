@@ -8,10 +8,10 @@ from django.contrib.auth.models import User
 class ArticleSerializer(serializers.ModelSerializer):
     # author = serializers.HiddenField(default=serializers.CurrentUserDefault())
     author = serializers.SlugRelatedField(queryset=User.objects.all(), slug_field='username')
-   
+    photos = serializers.ImageField()
     class Meta:
         model = Article
-        fields = ('author', 'id', 'title', 'content', 'description', 'created_at', 'updated_at')
+        fields = ('author', 'id', 'title', 'content', 'description', 'created_at', 'updated_at', 'photos')
         read_only_fields = ('created_at', 'updated_at')
         depth = 1
 
