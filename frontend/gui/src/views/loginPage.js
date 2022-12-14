@@ -5,12 +5,17 @@ import Form from 'react-bootstrap/Form';
 import './loginPage.css';
 
 const LoginPage = () => {
-  const { loginUser } = useContext(AuthContext);
+  const { loginUser, user } = useContext(AuthContext);
   const handleSubmit = e => {
     e.preventDefault();
+    if (!user) {
     const username = e.target.username.value;
     const password = e.target.password.value;
     username.length > 0 && loginUser(username, password);
+    }
+    if (user) {
+      alert("You are already signed in. Sign out to log in again.")
+    }
   };
 
   return (
