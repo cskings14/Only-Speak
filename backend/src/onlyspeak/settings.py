@@ -176,5 +176,22 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 
 
+# getting credentials 
 
+from google.oauth2 import service_account
+import os
+    
+# ...
+    
+GS_BUCKET_NAME = "only-speak-bucket" 
+GS_PROJECT_ID = "positive-karma-371610"
+    
+DEFAULT_FILE_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
 
+GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
+    os.path.join(BASE_DIR, "credential.json")
+)
+
+MEDIA_ROOT = 'media/'
+UPLOAD_ROOT = 'media/uploads/'
+MEDIA_URL = 'https://storage.googleapis.com/{}/'.format(GS_BUCKET_NAME)

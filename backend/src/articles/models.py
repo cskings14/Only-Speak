@@ -11,6 +11,7 @@ class Article(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    photos = models.ImageField(upload_to='photos', blank=True, null=True)
 
     def __str__(self):
         return self.title
