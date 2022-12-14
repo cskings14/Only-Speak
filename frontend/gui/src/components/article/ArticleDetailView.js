@@ -50,6 +50,7 @@ const ArticleDetail = () => {
             })
         )
         navigate('/');
+        window.location.reload(true);
 
     }
 
@@ -74,9 +75,11 @@ const ArticleDetail = () => {
         });
         if (response.status !== 400) {
             navigate("/");
+            window.location.reload(true);
         } else {
             alert("Something went wrong!");
         }
+        navigate("/");
     }
 
     const handlePostSubmit = e => {
@@ -98,6 +101,7 @@ const ArticleDetail = () => {
         });
         if (response.status !== 400) {
             navigate("/");
+            window.location.reload(true);
         } else {
             alert("Something went wrong!");
         }
@@ -115,6 +119,7 @@ const ArticleDetail = () => {
         });
         if (response.status !== 400) {
             navigate("/");
+            window.location.reload(true);
         } else {
             alert("Something went wrong!");
         }
@@ -145,6 +150,7 @@ const ArticleDetail = () => {
         });
         if (response.status !== 400) {
             navigate("/");
+            window.location.reload(true);
         } else {
             alert("Something went wrong!");
         }

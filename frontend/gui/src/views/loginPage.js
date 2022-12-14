@@ -26,7 +26,7 @@ const LoginPage = () => {
     //   </form>
     // </section>
     <Form onSubmit={handleSubmit} className="form">
-      <Form.Group className="mb-3" controlId="formBasicUsername">
+      <Form.Group className="mb-3">
         <Form.Label>Username</Form.Label>
         <Form.Control type="username" placeholder="Enter username" id="username" />
         <Form.Text className="text-muted">
@@ -34,7 +34,7 @@ const LoginPage = () => {
         </Form.Text>
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicPassword">
+      <Form.Group className="mb-3">
         <Form.Label>Password</Form.Label>
         <Form.Control type="password" placeholder="Password" id="password" />
       </Form.Group>
