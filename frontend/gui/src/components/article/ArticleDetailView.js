@@ -6,7 +6,8 @@ import AuthContext from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-
+import Comment from './Comment'
+import axios from 'axios';
 
 
 const ArticleDetail = () => {
@@ -14,6 +15,7 @@ const ArticleDetail = () => {
     let { user } = useContext(AuthContext);
 
     const [article, setArticle] = useState({});
+    const [data, setData] = useState([]);
     const { articleID } = useParams();
 
     const getArticle = async () => {
@@ -25,10 +27,18 @@ const ArticleDetail = () => {
         ).json();
         setArticle(article);
     };
+    
+
+    const getData = async () => {
+        const { data } = await axios.get(`http://127.0.0.1:8000/api/articles/${articleID}/comments/`);
+        setData(data);
+        console.log(data);
+    };
 
     useEffect(() => {
         if(articleID) {
             getArticle();
+            getData();
           }
     }, [articleID]);
 
@@ -68,11 +78,52 @@ const ArticleDetail = () => {
             alert("Something went wrong!");
         }
     }
+
+    const handlePostSubmit = e => {
+        e.preventDefault();
+        const author = user.username;
+        const content = e.target.content.value;
+        const article = articleID;
+
+        const response = fetch(`http://127.0.0.1:8000/api/articles/${articleID}/comments/create/`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                author,
+                content,
+                article
+            })
+        });
+        if (response.status !== 400) {
+            navigate("/");
+        } else {
+            alert("Something went wrong!");
+        }
+    }
+
+    function Component() {
+        return data.map((comment) => (
+            <>
+            <Comment dataset={comment} />
+            {
+              comment.author === user.username && 
+              (
+                <>
+                  <button>delete</button>
+                  <button>update</button>
+                </>
+              )
+            }
+        </>
+        ));
+      }
     
 
     return (
         <div>
-            <div>{article.title}</div>
+            <div>{article.title} by {article.author}</div>
             <div>{article.description}</div>
             <div>{article.content}</div>
             {user.username === article.author ? (
@@ -106,6 +157,31 @@ const ArticleDetail = () => {
             <br />
             <br />
             <div>Comments</div>
+            <Component />
+            {/* { data.map(comment => <Comment dataset={comment} />) }
+            {Comment.author === user.username ? (
+                <>
+                <button>delete</button>
+                <button>update</button>
+                </>
+            ): <br />
+            } */}
+                
+            
+            
+            <br />
+            <br />
+            <Form onSubmit={handlePostSubmit} className="form">
+
+            <Form.Group className="mb-3">
+                <Form.Label>Add Comment</Form.Label>
+                <Form.Control type="content" placeholder="Enter Content" id="content" />
+            </Form.Group>
+
+            <Button variant="primary" type="submit">
+                Submit
+            </Button>
+        </Form>
         </div>
     )
 
