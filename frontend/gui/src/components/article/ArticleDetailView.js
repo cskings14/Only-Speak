@@ -19,7 +19,7 @@ const ArticleDetail = () => {
     const { articleID } = useParams();
 
     const getArticle = async () => {
-        const article  = await (
+        const article = await (
             await fetch(
                 `http://127.0.0.1:8000/api/articles/${articleID}/`, {
                 method: "GET"
@@ -27,23 +27,23 @@ const ArticleDetail = () => {
         ).json();
         setArticle(article);
     };
-    
+
 
     const getData = async () => {
-        const { data } = await axios.get(`http://127.0.0.1:8000/api/articles/${articleID}/comments/`);
+        const { data } = await axios.get(`http://127.0.0.1:8000/api/comments/`);
         setData(data);
         console.log(data);
     };
 
     useEffect(() => {
-        if(articleID) {
+        if (articleID) {
             getArticle();
             getData();
-          }
+        }
     }, [articleID]);
 
     const deleteArticle = async () => {
-        const article  = await (
+        const article = await (
             await fetch(
                 `http://127.0.0.1:8000/api/articles/${articleID}/`, {
                 method: "DELETE"
@@ -103,23 +103,45 @@ const ArticleDetail = () => {
         }
     }
 
+    const handleDeleteCommentSubmit = e => {
+        e.preventDefault();
+        const commentID = e.target.id;
+        // console.log(`http://127.0.0.1:8000/api/articles/${articleID}/comments/${commentID}/delete/`);
+        const response = fetch(`http://127.0.0.1:8000/api/comments/${commentID}/`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        if (response.status !== 400) {
+            navigate("/");
+        } else {
+            alert("Something went wrong!");
+        }
+    }
+// if comment.article === article.id then make the comment
     function Component() {
         return data.map((comment) => (
+            comment.article === article.id && (
             <>
-            <Comment dataset={comment} />
-            {
-              comment.author === user.username && 
-              (
-                <>
-                  <button>delete</button>
-                  <button>update</button>
-                </>
-              )
-            }
-        </>
-        ));
-      }
-    
+                <Comment dataset={comment} />
+                {
+                    comment.author === user.username &&
+                    (
+                        <>
+                            <Form onSubmit={handleDeleteCommentSubmit} className="form" id={comment.id}>
+                                <Button variant="primary" type="submit">
+                                    Submit Deletion
+                                </Button>
+                            </Form>
+                        </>
+                    )
+                }
+            </>
+        ))
+        )
+    }
+
 
     return (
         <div>
@@ -128,31 +150,31 @@ const ArticleDetail = () => {
             <div>{article.content}</div>
             {user.username === article.author ? (
                 <>
-                <button onClick={deleteArticle}>Delete</button>
-                <Form onSubmit={handleEditSubmit} className="form">
+                    <button onClick={deleteArticle}>Delete</button>
+                    <Form onSubmit={handleEditSubmit} className="form">
 
 
-            <Form.Group className="mb-3">
-                <Form.Label>Title</Form.Label>
-                <Form.Control type="title" placeholder="Edit Title" id="title" />
-            </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Title</Form.Label>
+                            <Form.Control type="title" placeholder="Edit Title" id="title" />
+                        </Form.Group>
 
-            <Form.Group className="mb-3">
-                <Form.Label>Description</Form.Label>
-                <Form.Control type="description" placeholder="Edit Description" id="description" />
-            </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Description</Form.Label>
+                            <Form.Control type="description" placeholder="Edit Description" id="description" />
+                        </Form.Group>
 
-            <Form.Group className="mb-3">
-                <Form.Label>Content</Form.Label>
-                <Form.Control type="content" placeholder="Edit Content" id="content" />
-            </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Content</Form.Label>
+                            <Form.Control type="content" placeholder="Edit Content" id="content" />
+                        </Form.Group>
 
-            <Button variant="primary" type="submit">
-                Submit Edits
-            </Button>
-        </Form>
-        </>
-            ): <br />}
+                        <Button variant="primary" type="submit">
+                            Submit Edits
+                        </Button>
+                    </Form>
+                </>
+            ) : <br />}
 
             <br />
             <br />
@@ -166,22 +188,22 @@ const ArticleDetail = () => {
                 </>
             ): <br />
             } */}
-                
-            
-            
+
+
+
             <br />
             <br />
             <Form onSubmit={handlePostSubmit} className="form">
 
-            <Form.Group className="mb-3">
-                <Form.Label>Add Comment</Form.Label>
-                <Form.Control type="content" placeholder="Enter Content" id="content" />
-            </Form.Group>
+                <Form.Group className="mb-3">
+                    <Form.Label>Add Comment</Form.Label>
+                    <Form.Control type="content" placeholder="Enter Content" id="content" />
+                </Form.Group>
 
-            <Button variant="primary" type="submit">
-                Submit
-            </Button>
-        </Form>
+                <Button variant="primary" type="submit">
+                    Submit
+                </Button>
+            </Form>
         </div>
     )
 

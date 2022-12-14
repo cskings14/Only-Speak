@@ -1,6 +1,6 @@
 from django.urls import path, include
 from . import views
-from articles.api.views import ArticleViewSet, CommentListView, CommentCreateView, CommentUpdateView, CommentDeleteView
+from articles.api.views import ArticleViewSet, CommentViewSet
 from rest_framework.routers import DefaultRouter
 
 
@@ -9,15 +9,18 @@ from rest_framework.routers import DefaultRouter
 router = DefaultRouter()
 router.register('', ArticleViewSet, basename='articles')
 
+
+routy = DefaultRouter()
+routy.register('', CommentViewSet, basename='comments')
 # urlpatterns = router.urls
 
 urlpatterns = [
     path('articles/', include(router.urls)),
-    # path('', views.getRoutes),
-    path('articles/<int:pk>/comments/', CommentListView.as_view()),
-    path('articles/<int:pk>/comments/create/', CommentCreateView.as_view()),
-    path('articles/<int:pk>/comments/<int:comment_pk>/update/', CommentUpdateView.as_view()),
-    path('articles/<int:pk>/comments/<int:comment_pk>/delete/', CommentDeleteView.as_view()),
+    path('comments/', include(routy.urls)),
+    # path('articles/<int:pk>/comments/', CommentListView.as_view()),
+    # path('articles/<int:pk>/comments/create/', CommentCreateView.as_view()),
+    # path('articles/<int:pk>/comments/<int:id>/update/', CommentUpdateView.as_view()),
+    # path('articles/<int:pk>/comments/<int:id>/delete/', CommentDeleteView.as_view()),
     
 ]
 
