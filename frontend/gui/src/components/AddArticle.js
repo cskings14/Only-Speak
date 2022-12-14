@@ -38,6 +38,7 @@ const AddArticle = () => {
         });
         if (response.status !== 400) {
             navigate("/");
+            window.location.reload(true);
         } else {
             alert("Something went wrong!");
         }

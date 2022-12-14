@@ -60,18 +60,19 @@ const ArticleDetail = () => {
         const title = e.target.title.value;
         const description = e.target.description.value;
         const content = e.target.content.value;
+        let form_data = new FormData();
+        const photos = document.getElementById("photos").files[0];
+        form_data.append("author", author);
+        form_data.append("title", title);
+        form_data.append("description", description);
+        form_data.append("content", content);
+        if (photos) {
+            form_data.append("photos", photos);
+        }
 
         const response = fetch(`http://127.0.0.1:8000/api/articles/${articleID}/`, {
             method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                author,
-                title,
-                description,
-                content
-            })
+            body: form_data
         });
         if (response.status !== 400) {
             navigate("/");
@@ -132,8 +133,8 @@ const ArticleDetail = () => {
         const content = e.target.content.value;
         const article = articleID;
         console.log(articleID);
-        
-        
+
+
         // console.log(`http://127.0.0.1:8000/api/articles/${articleID}/comments/${commentID}/delete/`);
         const response = fetch(`http://127.0.0.1:8000/api/comments/${commentID}/`, {
             method: "PUT",
@@ -160,7 +161,7 @@ const ArticleDetail = () => {
         return data.map((comment) => (
             comment.article === article.id && (
                 <>
-                    <Comment dataset={comment}/>
+                    <Comment dataset={comment} />
                     {
                         comment.author === user.username &&
                         (
@@ -215,6 +216,11 @@ const ArticleDetail = () => {
                         <Form.Group className="mb-3">
                             <Form.Label>Content</Form.Label>
                             <Form.Control type="content" placeholder="Edit Content" id="content" />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3">
+                            <Form.Label>Enter Image (Optional)</Form.Label>
+                            <Form.Control type="file" id="photos" />
                         </Form.Group>
 
                         <Button variant="primary" type="submit">
