@@ -1,0 +1,6 @@
+Django
+django-cors-headers
+djangorestframework
+Pillow
+google-cloud-storage
+djangorestframework-simplejwt
