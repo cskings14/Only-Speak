@@ -9,7 +9,7 @@ const AddArticle = () => {
     const apiurl = "https://only-speak.herokuapp.com";
     const navigate = useNavigate();
     let { user } = useContext(AuthContext);
-
+    // sends form_data of the formData function to send a post request for an article object
 
     const handleSubmit = e => {
         e.preventDefault();

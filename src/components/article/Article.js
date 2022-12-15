@@ -8,7 +8,7 @@ const Article = props => {
 
     // console.log(props);
     // (<Card.Img variant="top" src={defaultimg} className='picture'/>)
-    
+    // this is the basic styling of a single article object
 
   return (
     <Card className='card'>

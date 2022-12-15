@@ -7,6 +7,8 @@ const AuthContext = createContext();
 export default AuthContext;
 
 export const AuthProvider = ({ children }) => {
+  // this is the mammoth of client side authenticaition. It uses the django rest framework api that I created to get jwt tokens
+  // it also decodes them to get info like a user's name / password
   const apiurl = "https://only-speak.herokuapp.com";
   const [authTokens, setAuthTokens] = useState(() =>
     localStorage.getItem("authTokens")

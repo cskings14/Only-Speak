@@ -14,6 +14,7 @@ routy = DefaultRouter()
 routy.register('', CommentViewSet, basename='comments')
 # urlpatterns = router.urls
 
+# these are the routes for the generic article/comment views
 urlpatterns = [
     path('articles/', include(router.urls)),
     path('comments/', include(routy.urls)),

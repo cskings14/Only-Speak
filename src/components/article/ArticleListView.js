@@ -4,6 +4,7 @@ import Article from "./Article";
 import AddArticle from "../AddArticle";
 
 const ArticleList = () => {
+    // creates a list of articles as well as the addArticle component to post an article
     const apiurl = "https://only-speak.herokuapp.com";
     const [data, setData] = useState([]);
 

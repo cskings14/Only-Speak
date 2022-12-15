@@ -5,13 +5,13 @@ import Form from 'react-bootstrap/Form';
 import './registerPage.css';
 
 function Register() {
-  const [fname, setFName] = useState("");
+  const [fname, setFName] = useState(""); // used useState instead of targeting the value for funzeez
   const [lname, setLName] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
-  const { registerUser } = useContext(AuthContext);
+  const { registerUser } = useContext(AuthContext); 
 
   const handleSubmit = e => {
     e.preventDefault();

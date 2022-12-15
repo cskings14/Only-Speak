@@ -5,15 +5,16 @@ import Form from 'react-bootstrap/Form';
 import './loginPage.css';
 
 const LoginPage = () => {
+  // uses loginUser of AuthContext for authentication. If handleSubmit works, they should go to the base route
   const { loginUser, user } = useContext(AuthContext);
   const handleSubmit = e => {
     e.preventDefault();
     if (!user) {
-    const username = e.target.username.value;
-    const password = e.target.password.value;
-    username.length > 0 && loginUser(username, password);
+    const username = e.target.username.value; // gets the username
+    const password = e.target.password.value; // gets the password
+    username.length > 0 && loginUser(username, password); // usernaem and password are arguments for loginUser
     }
-    if (user) {
+    if (user) { // stops the user from trying to login
       alert("You are already signed in. Sign out to log in again.")
     }
   };

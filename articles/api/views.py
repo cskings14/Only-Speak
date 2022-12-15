@@ -7,6 +7,7 @@ from .serializers import ArticleSerializer, CommentSerializer
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 
+# this is how we are able to interact with the info we obtain 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):

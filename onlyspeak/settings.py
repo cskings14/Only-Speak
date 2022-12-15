@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     # 'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
     # 'django.contrib.sites',
-]
+] 
+# the installed apps is where we add dependencies. We may also need to add middleware if the installed app needs it
 
 
 MIDDLEWARE = [
@@ -101,7 +102,7 @@ DATABASES = {
 
     }
 }
-
+# I switched to postgres on railway for production
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -143,6 +144,7 @@ STATICFILES_STORAGE = 'whitenoise.django.CompressedManifestStaticFilesStorage'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'build/static'),
 ]
+# used to add a static path for the herokuapp
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -155,7 +157,7 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }
-
+# needed to rest framework authentication
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=10),
@@ -187,6 +189,7 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
+# used to blacklist tokens
 
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
@@ -194,14 +197,14 @@ CORS_ORIGIN_WHITELIST = (
   'http://localhost:3000',
   'https://only-speak.herokuapp.com',
 )
-
+# allows certain domains to use the apis and what not
 
 # getting credentials 
 
 from google.oauth2 import service_account
 
     
-# ...
+# this is for google cloud storage
     
 GS_BUCKET_NAME = "only-speak-bucket" 
 GS_PROJECT_ID = "positive-karma-371610"
@@ -216,5 +219,7 @@ MEDIA_ROOT = 'media/'
 UPLOAD_ROOT = 'media/uploads/'
 MEDIA_URL = 'https://storage.googleapis.com/{}/'.format(GS_BUCKET_NAME)
 
+
+# this is needed for django to run on heroku
 import django_on_heroku
 django_on_heroku.settings(locals())

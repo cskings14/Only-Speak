@@ -10,7 +10,7 @@ import { AuthProvider } from "./context/AuthContext";
 import Login from "./views/loginPage";
 import Register from "./views/registerPage";
 
-
+// I am usign react router dom for the routing system. Each route has an element (what is shown to the client) which contains a component/view.
 function App() {
 
 

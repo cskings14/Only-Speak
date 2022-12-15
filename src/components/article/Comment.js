@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card';
 
 
 const Comment = props => {
-
+  // basic comment structure
   return (
     <Card className='card'>
         <Card.Body>

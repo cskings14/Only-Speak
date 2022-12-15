@@ -9,7 +9,7 @@ import Navbar from 'react-bootstrap/Navbar';
 
 const Header = () => {
   const { user, logoutUser } = useContext(AuthContext);
-
+// navbar depends on if the user is logged in or not. If not, it will show sign in. If they are, it will show sign out as well as the user's name
   return (
     <Navbar bg="dark" variant="dark">
       <Container>

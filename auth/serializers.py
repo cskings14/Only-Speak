@@ -1,6 +1,8 @@
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 
+# these serializers are used to login / generate new tokens / register a user
+
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 
     @classmethod

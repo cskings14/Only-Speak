@@ -3,7 +3,7 @@ from articles.models import Article, Comment
 from django.contrib.auth.models import User
 
 
-
+# how we interact with the models on the api
 
 class ArticleSerializer(serializers.ModelSerializer):
     # author = serializers.HiddenField(default=serializers.CurrentUserDefault())

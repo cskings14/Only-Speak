@@ -12,6 +12,15 @@ import './ArticleDetailView.css'
 import Card from 'react-bootstrap/Card';
 
 const ArticleDetail = () => {
+
+    // this shows a lot
+    // shows the article that was clicked on
+    // allows a user to edit the article if they wrote it
+    // allows any user to comment
+    // allows a user to edit the comment if they wrote it
+    // allows a user to delete the comment if they wrote it
+    // allows a user to delete the article if they wrote it
+    
     const apiurl = "https://only-speak.herokuapp.com";
     const navigate = useNavigate();
     let { user } = useContext(AuthContext);

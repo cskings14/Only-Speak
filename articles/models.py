@@ -3,7 +3,11 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
-
+# these are the article and comment models
+# the title/content/description models are similar in that they all use text
+# created/updated at are all dates that wont be changed
+# author is the user who created the article/comment
+# photos is basically a link to the google cloud storage. The input is a photo and the output is a link to photo in google cloud storage
 class Article(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField(max_length=500, default='')
