@@ -8,7 +8,8 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Comment from './Comment'
 import axios from 'axios';
-
+import './ArticleDetailView.css'
+import Card from 'react-bootstrap/Card';
 
 const ArticleDetail = () => {
     const navigate = useNavigate();
@@ -178,10 +179,10 @@ const ArticleDetail = () => {
                                 </Form>
 
 
-                                <Form onSubmit={handleDeleteCommentSubmit} className="form" id={comment.id}>
-                                    <Button variant="primary" type="submit">
-                                        Submit Deletion
-                                    </Button>
+                                <Form onSubmit={handleDeleteCommentSubmit} id={comment.id} className='buttondiv'>
+                                    <button variant="primary" type="submit" className='dbutton'>
+                                        Submit Deletion with content: {comment.content}
+                                    </button>
                                 </Form>
                             </>
                         )
@@ -194,12 +195,13 @@ const ArticleDetail = () => {
 
     return (
         <div>
-            <div>{article.title} by {article.author}</div>
-            <div>{article.description}</div>
-            <div>{article.content}</div>
+            {article.photos ? (<Card.Img variant="top" src={article.photos} className='picture'/>) : <br /> }
+            <div className='title' >{article.title} by {article.author}</div>
+            <div className='description'>{article.description}</div>
+            <div className='content'>{article.content}</div>
             {user.username === article.author ? (
                 <>
-                    <button onClick={deleteArticle}>Delete</button>
+                    <div className='buttondiv'><button onClick={deleteArticle} className='dbutton'>Delete</button></div>
                     <Form onSubmit={handleEditSubmit} className="form">
 
 

@@ -7,11 +7,12 @@ import './Article.css';
 const Article = props => {
 
     // console.log(props);
+    // (<Card.Img variant="top" src={defaultimg} className='picture'/>)
     
 
   return (
     <Card className='card'>
-      {props.dataset.photos ? (<Card.Img variant="top" src={props.dataset.photos} className='picture'/>) : (<Card.Img variant="top" src={defaultimg} className='picture'/>) }
+      {props.dataset.photos ? (<Card.Img variant="top" src={props.dataset.photos} className='picture'/>) : <br /> }
         <Card.Body>
           <Card.Text className='title'>
             {props.dataset.title} by {props.dataset.author}
