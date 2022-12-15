@@ -87,19 +87,19 @@ WSGI_APPLICATION = 'onlyspeak.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
     # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': 'railway',
-    #     'USER': 'postgres',
-    #     'PASSWORD': 'QlgEmCypaT9SA8mv1Dzi',
-    #     'HOST': 'containers-us-west-180.railway.app',
-    #     'PORT': '6004',
-
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
     # }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'QlgEmCypaT9SA8mv1Dzi',
+        'HOST': 'containers-us-west-180.railway.app',
+        'PORT': '6004',
+
+    }
 }
 
 
