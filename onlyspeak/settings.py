@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
+import django_heroku
 from pathlib import Path
 from datetime import timedelta # for jwt
 
@@ -201,3 +202,5 @@ GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
 MEDIA_ROOT = 'media/'
 UPLOAD_ROOT = 'media/uploads/'
 MEDIA_URL = 'https://storage.googleapis.com/{}/'.format(GS_BUCKET_NAME)
+
+django_heroku.settings(locals())
