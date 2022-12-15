@@ -7,6 +7,7 @@ const AuthContext = createContext();
 export default AuthContext;
 
 export const AuthProvider = ({ children }) => {
+  const apiurl = "https://only-speak.herokuapp.com";
   const [authTokens, setAuthTokens] = useState(() =>
     localStorage.getItem("authTokens")
       ? JSON.parse(localStorage.getItem("authTokens"))
@@ -22,7 +23,7 @@ export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
 
   const loginUser = async (username, password) => {
-    const response = await fetch("http://127.0.0.1:8000/auth/login/", {
+    const response = await fetch(`${apiurl}/auth/login/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -45,7 +46,7 @@ export const AuthProvider = ({ children }) => {
   };
   
   const registerUser = async (first_name, last_name, username, email, password, password2) => {
-    const response = await fetch("http://127.0.0.1:8000/auth/register/", {
+    const response = await fetch(`${apiurl}/auth/register/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

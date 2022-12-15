@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form';
 import './AddArticle.css'
 
 const AddArticle = () => {
+    const apiurl = "https://only-speak.herokuapp.com";
     const navigate = useNavigate();
     let { user } = useContext(AuthContext);
 
@@ -32,7 +33,7 @@ const AddArticle = () => {
         }
         
 
-        const response = fetch("http://127.0.0.1:8000/api/articles/", {
+        const response = fetch(`${apiurl}/api/articles/`, {
             method: "POST",
             body: form_data
         });

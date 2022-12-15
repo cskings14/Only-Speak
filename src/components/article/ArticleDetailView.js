@@ -12,6 +12,7 @@ import './ArticleDetailView.css'
 import Card from 'react-bootstrap/Card';
 
 const ArticleDetail = () => {
+    const apiurl = "https://only-speak.herokuapp.com";
     const navigate = useNavigate();
     let { user } = useContext(AuthContext);
 
@@ -22,7 +23,7 @@ const ArticleDetail = () => {
     const getArticle = async () => {
         const article = await (
             await fetch(
-                `http://127.0.0.1:8000/api/articles/${articleID}/`, {
+                `${apiurl}/api/articles/${articleID}/`, {
                 method: "GET"
             })
         ).json();
@@ -31,7 +32,7 @@ const ArticleDetail = () => {
 
 
     const getData = async () => {
-        const { data } = await axios.get(`http://127.0.0.1:8000/api/comments/`);
+        const { data } = await axios.get(`${apiurl}/api/comments/`);
         setData(data);
         console.log(data);
     };
@@ -46,7 +47,7 @@ const ArticleDetail = () => {
     const deleteArticle = async () => {
         const article = await (
             await fetch(
-                `http://127.0.0.1:8000/api/articles/${articleID}/`, {
+                `${apiurl}/api/articles/${articleID}/`, {
                 method: "DELETE"
             })
         )
@@ -71,7 +72,7 @@ const ArticleDetail = () => {
             form_data.append("photos", photos);
         }
 
-        const response = fetch(`http://127.0.0.1:8000/api/articles/${articleID}/`, {
+        const response = fetch(`${apiurl}/api/articles/${articleID}/`, {
             method: "PUT",
             body: form_data
         });
@@ -90,7 +91,7 @@ const ArticleDetail = () => {
         const content = e.target.content.value;
         const article = articleID;
 
-        const response = fetch(`http://127.0.0.1:8000/api/comments/`, {
+        const response = fetch(`${apiurl}/api/comments/`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -113,7 +114,7 @@ const ArticleDetail = () => {
         e.preventDefault();
         const commentID = e.target.id;
         // console.log(`http://127.0.0.1:8000/api/articles/${articleID}/comments/${commentID}/delete/`);
-        const response = fetch(`http://127.0.0.1:8000/api/comments/${commentID}/`, {
+        const response = fetch(`${apiurl}/api/comments/${commentID}/`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"
@@ -137,7 +138,7 @@ const ArticleDetail = () => {
 
 
         // console.log(`http://127.0.0.1:8000/api/articles/${articleID}/comments/${commentID}/delete/`);
-        const response = fetch(`http://127.0.0.1:8000/api/comments/${commentID}/`, {
+        const response = fetch(`${apiurl}/api/comments/${commentID}/`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"

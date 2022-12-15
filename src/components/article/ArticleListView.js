@@ -4,10 +4,11 @@ import Article from "./Article";
 import AddArticle from "../AddArticle";
 
 const ArticleList = () => {
+    const apiurl = "https://only-speak.herokuapp.com";
     const [data, setData] = useState([]);
 
     const getData = async () => {
-        const { data } = await axios.get("http://127.0.0.1:8000/api/articles/");
+        const { data } = await axios.get(`${apiurl}/api/articles/`);
         setData(data);
         console.log(data);
     };
