@@ -4,3 +4,5 @@ djangorestframework
 Pillow
 google-cloud-storage
 djangorestframework-simplejwt
+gunicorn
+whitenoise
