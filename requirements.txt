@@ -6,3 +6,5 @@ google-cloud-storage
 djangorestframework-simplejwt
 gunicorn
 whitenoise
+django-heroku
+django-on-heroku
