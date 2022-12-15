@@ -3,5 +3,5 @@ Only Speak is a Full Stack web app using django as the backend and react as the 
 This website is by no means a copyrighted production build.
 
 You can make an account or use this one if you don't want to create one:
- username: 	Commenter
- password: Testing1324$#@!
+ - username: 	Commenter
+ - password: Testing1324$#@!
