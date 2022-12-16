@@ -25,7 +25,8 @@ export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
 
   const loginUser = async (username, password) => {
-    const response = await fetch(`https://only-speak.herokuapp.com/auth/login/`, {
+    const response = await fetch(`${apiurl}/auth/login/`, {
+      credentials: 'include',
       method: "POST",
       headers: {
         "Content-Type": "application/json"
