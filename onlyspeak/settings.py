@@ -213,9 +213,9 @@ GS_PROJECT_ID = "positive-karma-371610"
     
 DEFAULT_FILE_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
 
-GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
-    os.path.join(BASE_DIR, "onlyspeak/credential.json")
-)
+# GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
+#     os.path.join(BASE_DIR, "credential.json")
+# )
 
 MEDIA_ROOT = 'media/'
 UPLOAD_ROOT = 'media/uploads/'
