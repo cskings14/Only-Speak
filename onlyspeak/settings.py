@@ -223,3 +223,5 @@ MEDIA_URL = 'https://storage.googleapis.com/{}/'.format(GS_BUCKET_NAME)
 # this is needed for django to run on heroku
 import django_on_heroku
 django_on_heroku.settings(locals())
+
+CSRF_TRUSTED_ORIGINS=['https://only-speak.herokuapp.com']
