@@ -26,3 +26,4 @@ urlpatterns = [
     
     
 ]
+# added to urls 
