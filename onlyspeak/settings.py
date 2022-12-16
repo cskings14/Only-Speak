@@ -190,12 +190,12 @@ SIMPLE_JWT = {
 }
 # used to blacklist tokens
 
-CORS_ORIGIN_ALLOW_ALL = False
-CORS_ORIGIN_WHITELIST = (
-   'http://localhost:8000',
-   'http://localhost:3000',
-  'https://only-speak.herokuapp.com',
-)
+CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ORIGIN_WHITELIST = (
+#    'http://localhost:8000',
+#    'http://localhost:3000',
+#   'https://only-speak.herokuapp.com',
+# )
 # allows certain domains to use the apis and what not
 
 # getting credentials 
