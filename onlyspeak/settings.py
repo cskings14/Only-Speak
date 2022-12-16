@@ -152,9 +152,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
-    ],
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
@@ -195,8 +192,8 @@ SIMPLE_JWT = {
 
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
-#   'http://localhost:8000',
-#   'http://localhost:3000',
+   'http://localhost:8000',
+   'http://localhost:3000',
   'https://only-speak.herokuapp.com',
 )
 # allows certain domains to use the apis and what not
@@ -226,5 +223,3 @@ MEDIA_URL = 'https://storage.googleapis.com/{}/'.format(GS_BUCKET_NAME)
 import django_on_heroku
 django_on_heroku.settings(locals())
 
-CSRF_TRUSTED_ORIGINS=['https://only-speak.herokuapp.com']
-CSRF_COOKIE_SECURE = False
