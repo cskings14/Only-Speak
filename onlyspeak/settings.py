@@ -225,3 +225,4 @@ import django_on_heroku
 django_on_heroku.settings(locals())
 
 CSRF_TRUSTED_ORIGINS=['https://only-speak.herokuapp.com']
+CSRF_COOKIE_SECURE = False
